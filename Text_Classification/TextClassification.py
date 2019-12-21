@@ -65,16 +65,28 @@ print(x_train_tfidf.shape)
 print(x_test_tfidf.shape)
 
 #modeling on tfidf data
+print('Naive Bayes Model Fitting on TFIDF')
 NB_tf = MultinomialNB()
 NB_tf.fit(x_train_tfidf,y_train)
 
-print('model Fitting completed')
-
 #model prediction
-
 test_pred= NB_tf.predict(x_test_tfidf)
 from sklearn.metrics import accuracy_score, balanced_accuracy_score, classification_report, confusion_matrix
 report=classification_report(y_test, test_pred)
 print(report)
 
+#modeling on tfidf data
+print('Naive Bayes Model Fitting on Count vectorizer')
+NB_co = MultinomialNB()
+NB_co.fit(x_train_counts,y_train)
 
+#model prediction
+test_pred= NB_co.predict(x_test_counts)
+from sklearn.metrics import accuracy_score, balanced_accuracy_score, classification_report, confusion_matrix
+from sklearn.metrics import precision_score, recall_score, precision_recall_curve,roc_auc_score,auc
+report=classification_report(y_test, test_pred)
+acc=accuracy_score(y_test, test_pred)
+precision=precision_score(y_test,test_pred, pos_label=1)
+print(report)
+print('Accuracy: ', acc)
+print('Precision score for 1 :', precision)
