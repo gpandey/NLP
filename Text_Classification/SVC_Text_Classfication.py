@@ -12,8 +12,6 @@ import xgboost,string, textblob
 from sklearn.model_selection import train_test_split
 from sklearn.naive_bayes import MultinomialNB
 
-print('Upto here it is working fine')
-
 #reading the data from data path
 data_path = r"C:\Users\gitaa\Desktop\DataScienceProject\NLP_project\Multi_class_classification\train\train.csv"
 df = pd.read_csv(data_path)
